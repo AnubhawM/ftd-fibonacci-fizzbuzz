@@ -1,6 +1,6 @@
 package com.cooksys.ftd.assignments.control;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+//import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * The Fibonacci sequence is simply and recursively defined: the first two elements are `1`, and
@@ -24,7 +24,27 @@ public class Fibonacci {
      * @throws IllegalArgumentException if the given index is less than zero
      */
     public static int atIndex(int i) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+    	if (i < 0) {
+    		throw new IllegalArgumentException();
+    	}
+    	/*
+    	if (i == 0) {
+    		int[] fibs = {1};
+    		return fibs[0];
+    	}
+    	*/
+    	int[] fibs = new int[i];
+    	if (i == 0)
+    	fibs[0] = 1;
+    	fibs[1] = 1;
+    	
+    	for (int j = 2; j < i; j++) {
+    		fibs[j] = fibs[j - 1] + fibs[j - 2];
+    	}
+    	
+    	return fibs[i];
+    	
     }
 
     /**
@@ -38,7 +58,28 @@ public class Fibonacci {
      *                                  given end is less than the given start
      */
     public static int[] slice(int start, int end) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+    	int size = end - start;
+    	if (start < 0 || end < 0 || end < start) {
+    		throw new IllegalArgumentException();
+    	}
+    	if (start == 0 && end == 0) {
+        	int[] fibs = new int[0];
+        	return fibs;
+    	}
+    	int[] fibs = new int[size];
+    	fibs[0] = 1;
+    	fibs[1] = 1;
+    	
+    	if (start == 0 && end == 1) {
+    		return fibs;
+    	}
+    	else {
+	    	for (int j = start; j < end; j++) {
+	    		fibs[j] = fibs[j - 1] + fibs[j - 2];
+	    	}
+	    	return fibs;
+    	}
     }
 
     /**
@@ -49,6 +90,11 @@ public class Fibonacci {
      * @throws IllegalArgumentException if the given count is negative
      */
     public static int[] fibonacci(int count) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+    	if (count < 1) {
+    		throw new IllegalArgumentException();
+    	}
+    	return slice(0, count);
+    	
     }
 }

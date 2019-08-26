@@ -1,6 +1,8 @@
 package com.cooksys.ftd.assignments.control;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.util.ArrayList;
+
+//import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * FizzBuzz is an old programming exercise.
@@ -26,7 +28,11 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if b is zero
      */
     public static boolean divides(int a, int b) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+    	if (b == 0) {
+    		throw new IllegalArgumentException();
+    	}
+    	return true ? (a % b == 0) : (a % b != 0);
     }
 
     /**
@@ -41,7 +47,22 @@ public class FizzBuzz {
      * @return a message according to the format above, or null if n is not divisible by either 3 or 5
      */
     public static String message(int n) {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+    	if (divides(n, 3) && divides(n, 5)) {
+    		return Integer.toString(n) + ": FizzBuzz";
+    	}
+    	else if (divides(n, 3) == true) {
+    		return Integer.toString(n) + ": Fizz";
+    	}
+    	else if (divides(n, 5)) {
+    		return Integer.toString(n) + ": Buzz";
+    	}
+    	else if (n == 1) {
+    		return null;
+    	}
+    	else {
+    		return "null";
+    	}
     }
 
     /**
@@ -55,15 +76,66 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if the given end is less than the given start
      */
     public static String[] messages(int start, int end) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+    	if (end < start) {
+    		throw new IllegalArgumentException();
+    	}
+    	if (start == end) {
+    		String[] fizzBuzzMessages = new String[0];
+    		return fizzBuzzMessages;
+    	}
+    	/*
+    	else if (start == end && !message(start).equals("null")) {
+    		String[] fizzBuzzMessages = new String[1];
+    		fizzBuzzMessages[0] = message(start);
+    		return fizzBuzzMessages;
+    	}
+    	*/
+    	else {
+
+	    	String[] fizzBuzzMessages = new String[(end - start)];
+	    	//System.out.println(fizzBuzzMessages.length);
+	    	
+	    	int fizzBuzzIndex = 0;
+	    	int nullCounter = 0;
+	
+	
+	    	for (int i = start; i < end; i++) {
+
+	    		if (message(i).equals("null")) {
+	    			nullCounter++;
+	    		}
+				fizzBuzzMessages[fizzBuzzIndex] = message(i);
+				if (end - start > 1 && end - i > 1) {
+					fizzBuzzIndex++;
+				}
+				System.out.println(fizzBuzzIndex);
+	    	}
+	    	
+	    	String[] finalMessages = new String[(fizzBuzzIndex + 1) - nullCounter];
+	    	int ind = 0;
+	    	for (int k = 0; k < fizzBuzzMessages.length; k++) {
+	    		if (!fizzBuzzMessages[k].equals("null")) {
+	    			finalMessages[ind] = fizzBuzzMessages[k];
+	    			ind++;
+	    		}
+	    	}
+    		return finalMessages;
+
+    	}
     }
 
+    
+    
     /**
      * For this main method, iterate over the numbers 1 through 115 and print
      * the relevant messages to sysout
      */
     public static void main(String[] args) {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+    	for (int i = 2; i <= 115; i++) {
+    		System.out.println(message(i));
+    	}
     }
 
 }
