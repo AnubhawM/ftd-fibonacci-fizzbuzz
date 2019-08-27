@@ -28,18 +28,26 @@ public class Fibonacci {
     	if (i < 0) {
     		throw new IllegalArgumentException();
     	}
-    	/*
+    	
     	if (i == 0) {
     		int[] fibs = {1};
     		return fibs[0];
+        }
+    	
+    	else if (i == 1) {
+        	int[] fibs = new int[i + 1];
+        	fibs[0] = 1;
+        	fibs[1] = 1;
+        	return fibs[1];
     	}
-    	*/
-    	int[] fibs = new int[i];
-    	if (i == 0)
+    	
+    	int[] fibs = new int[i + 1];
     	fibs[0] = 1;
     	fibs[1] = 1;
     	
-    	for (int j = 2; j < i; j++) {
+
+    	
+    	for (int j = 2; j <= i; j++) {
     		fibs[j] = fibs[j - 1] + fibs[j - 2];
     	}
     	
@@ -67,19 +75,15 @@ public class Fibonacci {
         	int[] fibs = new int[0];
         	return fibs;
     	}
-    	int[] fibs = new int[size];
-    	fibs[0] = 1;
-    	fibs[1] = 1;
     	
-    	if (start == 0 && end == 1) {
-    		return fibs;
+    	int[] fibSlice = new int[size];
+    	int fibSliceIndex = 0;
+    	
+    	for (int i = start; i < end; i++) {
+    		fibSlice[fibSliceIndex] = atIndex(i);
+    		fibSliceIndex++;
     	}
-    	else {
-	    	for (int j = start; j < end; j++) {
-	    		fibs[j] = fibs[j - 1] + fibs[j - 2];
-	    	}
-	    	return fibs;
-    	}
+    	return fibSlice;
     }
 
     /**
@@ -91,7 +95,7 @@ public class Fibonacci {
      */
     public static int[] fibonacci(int count) throws IllegalArgumentException {
         //throw new NotImplementedException();
-    	if (count < 1) {
+    	if (count < 0) {
     		throw new IllegalArgumentException();
     	}
     	return slice(0, count);
