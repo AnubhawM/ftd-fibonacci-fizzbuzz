@@ -1,6 +1,5 @@
 package com.cooksys.ftd.assignments.control;
 
-import java.util.ArrayList;
 
 //import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -32,7 +31,7 @@ public class FizzBuzz {
     	if (b == 0) {
     		throw new IllegalArgumentException();
     	}
-    	return true ? (a % b == 0) : (a % b != 0);
+    	return (a % b == 0) ? true : false;
     }
 
     /**
@@ -84,17 +83,10 @@ public class FizzBuzz {
     		String[] fizzBuzzMessages = new String[0];
     		return fizzBuzzMessages;
     	}
-    	/*
-    	else if (start == end && !message(start).equals("null")) {
-    		String[] fizzBuzzMessages = new String[1];
-    		fizzBuzzMessages[0] = message(start);
-    		return fizzBuzzMessages;
-    	}
-    	*/
+
     	else {
 
 	    	String[] fizzBuzzMessages = new String[(end - start)];
-	    	//System.out.println(fizzBuzzMessages.length);
 	    	
 	    	int fizzBuzzIndex = 0;
 	    	int nullCounter = 0;
@@ -109,7 +101,6 @@ public class FizzBuzz {
 				if (end - start > 1 && end - i > 1) {
 					fizzBuzzIndex++;
 				}
-				System.out.println(fizzBuzzIndex);
 	    	}
 	    	
 	    	String[] finalMessages = new String[(fizzBuzzIndex + 1) - nullCounter];

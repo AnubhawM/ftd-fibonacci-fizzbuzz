@@ -44,15 +44,11 @@ public class Fibonacci {
     	int[] fibs = new int[i + 1];
     	fibs[0] = 1;
     	fibs[1] = 1;
-    	
 
-    	
     	for (int j = 2; j <= i; j++) {
     		fibs[j] = fibs[j - 1] + fibs[j - 2];
     	}
-    	
     	return fibs[i];
-    	
     }
 
     /**
