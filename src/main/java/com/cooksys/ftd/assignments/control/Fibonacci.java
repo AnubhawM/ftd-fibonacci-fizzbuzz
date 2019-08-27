@@ -28,22 +28,13 @@ public class Fibonacci {
     	if (i < 0) {
     		throw new IllegalArgumentException();
     	}
-    	
-    	if (i == 0) {
-    		int[] fibs = {1};
-    		return fibs[0];
-        }
-    	
-    	else if (i == 1) {
-        	int[] fibs = new int[i + 1];
-        	fibs[0] = 1;
-        	fibs[1] = 1;
-        	return fibs[1];
-    	}
-    	
+
     	int[] fibs = new int[i + 1];
     	fibs[0] = 1;
-    	fibs[1] = 1;
+    	
+    	if (i > 0) {
+        	fibs[1] = 1;
+    	}
 
     	for (int j = 2; j <= i; j++) {
     		fibs[j] = fibs[j - 1] + fibs[j - 2];
